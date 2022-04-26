@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="MGameLoop.hpp" />
     <ClInclude Include="MConsolUtil.hpp" />
     <ClInclude Include="Player.hpp" />

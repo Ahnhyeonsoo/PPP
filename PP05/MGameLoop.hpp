@@ -3,7 +3,7 @@
 #include <thread>
 #include "MConsolUtil.hpp"
 #include "Player.hpp"
-#include "MObject.hpp"
+#include "Enemy.hpp"
 
 using namespace std;
 
@@ -14,11 +14,10 @@ namespace MuSeoun_Engine
 	private:
 		bool _isGameRunning;
 		MConsoleRenderer cRenderer;
-		MConsoleRenderer mRenderer;
 		chrono::system_clock::time_point startRenderTimePoint;
 		chrono::duration<double> renderDuration;
 		Player p;
-		MObject m;
+		Enemy m;
 
 	public:
 		MGameLoop() { _isGameRunning = false; }
@@ -69,34 +68,25 @@ namespace MuSeoun_Engine
 		}
 		void Update()
 		{
-			if (m.x > 0) {
-				m.x -= 1;
-			}
-			else {
-				m.x = 30;
-			}
+			m.Move();
 
 			if (m.x == p.x && m.y == p.y)
 			{
-				_isGameRunning = false;
+				Stop();
 			}
-
-			
-			
-			
 		}
 		void Render()
 		{
 
 			cRenderer.Clear();
-			mRenderer.Clear();
+			cRenderer.Clear();
 
 
 			cRenderer.MoveCursor(p.x, p.y);
 			cRenderer.DrawString("P");
 
-			mRenderer.MoveCursor(m.x, m.y);
-			mRenderer.DrawString("M");
+			cRenderer.MoveCursor(m.x, m.y);
+			cRenderer.DrawString("M");
 
 
 			cRenderer.MoveCursor(10, 20);

@@ -38,5 +38,8 @@
     <ClInclude Include="Player.hpp">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
